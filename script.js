@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- Newsletter form ---------- */
-  var newsletterForms = document.querySelectorAll('.newsletter-form');
+  var newsletterForms = document.querySelectorAll('.newsletter-form, .newsletter-form-wide');
   newsletterForms.forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();

@@ -1245,8 +1245,8 @@ section{position:relative;}
   display:flex; flex-direction:column;
 }
 .ebook-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md);}
-.ebook-card .eb-media{aspect-ratio:3/4;overflow:hidden;}
-.ebook-card .eb-media img{width:100%;height:100%;object-fit:cover;}
+.ebook-card .eb-media{aspect-ratio:2/3;overflow:hidden;background:var(--green-50);}
+.ebook-card .eb-media img{width:100%;height:100%;object-fit:contain;}
 .ebook-card .eb-body{padding:22px 24px 26px;}
 .ebook-card h3{font-size:17px;margin-bottom:16px;line-height:1.4;}
 

@@ -1155,33 +1155,23 @@ section{position:relative;}
 }
 .collage-circles .cc-main{
   position:absolute;
-  top:0; left:10%;
-  width:68%; height:68%;
+  top:0; left:0;
+  width:75%; height:75%;
   border-radius:50%;
   overflow:hidden;
   box-shadow:var(--shadow-lg);
   border:6px solid var(--white);
-  z-index:2;
+  z-index:1;
 }
 .collage-circles .cc-sub{
   position:absolute;
-  bottom:0; left:0;
-  width:46%; height:46%;
+  bottom:0; right:0;
+  width:55%; height:55%;
   border-radius:50%;
   overflow:hidden;
   box-shadow:var(--shadow-md);
   border:5px solid var(--white);
-  z-index:3;
-}
-.collage-circles .cc-sub2{
-  position:absolute;
-  bottom:6%; right:0;
-  width:40%; height:40%;
-  border-radius:50%;
-  overflow:hidden;
-  box-shadow:var(--shadow-md);
-  border:5px solid var(--white);
-  z-index:1;
+  z-index:2;
 }
 .collage-circles img{width:100%;height:100%;object-fit:cover;}
 

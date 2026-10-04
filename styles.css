@@ -1107,7 +1107,7 @@ section{position:relative;}
    Responsive
    ========================================================================== */
 @media(max-width:1080px){
-  .grid-3,.grid-products{grid-template-columns:repeat(2,1fr);}
+  .grid-3,.grid-products,.grid-4{grid-template-columns:repeat(2,1fr);}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .value-grid{grid-template-columns:repeat(2,1fr);}
   .team-grid{grid-template-columns:repeat(2,1fr);}
@@ -1130,7 +1130,7 @@ section{position:relative;}
   .section-pad{padding:70px 0;}
   .hero-content{padding-top:calc(var(--header-h) + 16px);padding-bottom:50px;margin-left:0;}
   .hero-ctas{margin-bottom:44px;}
-  .grid-3,.grid-products,.grid-2,.value-grid,.team-grid{grid-template-columns:1fr;}
+  .grid-3,.grid-products,.grid-2,.value-grid,.team-grid,.grid-4{grid-template-columns:1fr;}
   .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px;}
   .footer-grid{grid-template-columns:1fr;gap:36px;}
   .form-row{grid-template-columns:1fr;}

@@ -220,13 +220,12 @@ input,textarea,select{font-family:inherit;}
 }
 .site-header.solid .brand{color:var(--green-900);}
 .brand .brand-mark{
-  width:40px;height:40px;
-  border-radius:50%;
-  background:var(--gold);
+  width:46px;height:46px;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
 }
 .brand .brand-mark svg{width:22px;height:22px;}
+.brand .brand-mark.footer-mark{width:56px;height:56px;}
 .brand span em{
   display:block;
   font-family:var(--font-body);
@@ -922,13 +921,15 @@ section{position:relative;}
 }
 .preloader.hide{opacity:0;visibility:hidden;}
 .preloader-mark{
-  width:64px;height:64px;border-radius:50%;
-  border:3px solid rgba(255,179,0,0.25);
-  border-top-color:var(--gold);
-  animation:spin 0.9s linear infinite;
+  width:88px;height:88px;
+  object-fit:contain;
+  animation:pulse-logo 1.3s ease-in-out infinite;
 }
 .preloader span{color:var(--cream);font-family:var(--font-head);font-size:13px;letter-spacing:.16em;text-transform:uppercase;}
-@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes pulse-logo{
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.08);opacity:.75;}
+}
 
 /* ---------- About page specific ---------- */
 .value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}

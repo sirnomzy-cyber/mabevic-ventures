@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
     categoryBlocks.forEach(function (block) {
       var blockCategory = block.getAttribute('data-category');
       var categoryMatches = activeCategory === 'all' || activeCategory === blockCategory;
-      var cards = block.querySelectorAll('.product-card');
+      var cards = block.querySelectorAll('.product-card, .ebook-card');
       var visibleInBlock = 0;
 
       cards.forEach(function (card) {

@@ -1504,3 +1504,37 @@ section{position:relative;}
   .article-cta{padding:28px 24px;}
   .author-box{flex-direction:column;align-items:center;text-align:center;}
 }
+
+/* ==========================================================================
+   404 / error page
+   ========================================================================== */
+.error-page{
+  position:relative;
+  min-height:100vh;
+  display:flex;align-items:center;
+  background:var(--green-900);
+  color:var(--white);
+  padding:calc(var(--header-h) + 50px) 0 90px;
+  text-align:center;
+  overflow:hidden;
+}
+.error-page::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 15%, rgba(255,179,0,0.14), transparent 45%),
+             radial-gradient(circle at 10% 90%, rgba(60,143,65,0.28), transparent 50%);
+}
+.error-inner{position:relative;z-index:1;max-width:640px;margin:0 auto;}
+.error-code{
+  font-family:var(--font-head);font-weight:700;
+  font-size:clamp(96px,20vw,190px);line-height:1;
+  color:var(--gold);letter-spacing:-.02em;margin-bottom:6px;
+}
+.error-page h1{color:var(--white);font-size:clamp(26px,4vw,38px);margin-bottom:14px;}
+.error-page p{color:rgba(245,245,220,0.8);font-size:17px;margin-bottom:32px;}
+.error-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:44px;}
+.error-links{
+  display:flex;gap:10px 22px;justify-content:center;flex-wrap:wrap;
+  padding-top:28px;border-top:1px solid rgba(255,255,255,0.14);
+}
+.error-links a{font-size:14px;font-weight:600;color:rgba(245,245,220,0.8);transition:color .25s ease;}
+.error-links a:hover{color:var(--gold);}

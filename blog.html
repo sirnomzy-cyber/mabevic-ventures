@@ -67,9 +67,18 @@
 
 <section class="section-pad">
   <div class="container">
+    <div class="filter-tabs blog-filter reveal">
+      <button class="blog-tab active" data-cat="all">All Posts</button>
+      <button class="blog-tab" data-cat="agriculture">Agriculture</button>
+      <button class="blog-tab" data-cat="business">Business</button>
+      <button class="blog-tab" data-cat="food">Food</button>
+      <button class="blog-tab" data-cat="health">Health</button>
+      <button class="blog-tab" data-cat="import-export">Import Export</button>
+    </div>
+
     <div class="grid-products reveal-stagger">
 
-      <div class="blog-card reveal">
+      <div class="blog-card reveal" data-categories="agriculture">
         <div class="bc-media"><img src="assets/blog/livestock-nutrition.webp" alt="Optimizing livestock nutrition"></div>
         <div class="bc-body">
           <span class="cat-pill">Agriculture</span>
@@ -79,17 +88,17 @@
         </div>
       </div>
 
-      <div class="blog-card reveal">
+      <div class="blog-card reveal" data-categories="import-export">
         <div class="bc-media"><img src="assets/blog/personal-shopping.webp" alt="Personal shopping services"></div>
         <div class="bc-body">
-          <span class="cat-pill">Import-Export</span>
+          <span class="cat-pill">Import Export</span>
           <div class="bc-meta"><span>Oct 8, 2024</span></div>
           <h3>Top Personal Shopping Services Featuring Ayoola Poundo Yam, Indomie Noodles &amp; Milo</h3>
           <a href="/blog/personal-shopping-services" class="bc-link">Read More »</a>
         </div>
       </div>
 
-      <div class="blog-card reveal">
+      <div class="blog-card reveal" data-categories="agriculture">
         <div class="bc-media"><img src="assets/blog/maize-yield.webp" alt="Maize field"></div>
         <div class="bc-body">
           <span class="cat-pill">Agriculture</span>
@@ -99,17 +108,17 @@
         </div>
       </div>
 
-      <div class="blog-card reveal">
+      <div class="blog-card reveal" data-categories="food health">
         <div class="bc-media"><img src="assets/blog/traditional-health-practices.webp" alt="Eat Food Like Medicine And Herbs Like Food"></div>
         <div class="bc-body">
-          <span class="cat-pill">Food</span>
+          <span class="cat-pill">Food · Health</span>
           <div class="bc-meta"><span>Jun 10, 2024</span></div>
           <h3>Eat Food Like Medicine And Herbs Like Food</h3>
           <a href="/blog/traditional-health-practices" class="bc-link">Read More »</a>
         </div>
       </div>
 
-      <div class="blog-card reveal">
+      <div class="blog-card reveal" data-categories="agriculture">
         <div class="bc-media"><img src="assets/blog/profit-livestock-poultry-snail.webp" alt="Profit Like a Pro"></div>
         <div class="bc-body">
           <span class="cat-pill">Agriculture</span>
@@ -119,7 +128,7 @@
         </div>
       </div>
 
-      <div class="blog-card reveal">
+      <div class="blog-card reveal" data-categories="business">
         <div class="bc-media"><img src="assets/blog/problem-solving-digital-products.webp" alt="Transform Problem-Solving Approach With High-Impact Digital Products"></div>
         <div class="bc-body">
           <span class="cat-pill">Business</span>
@@ -164,18 +173,17 @@
     <div>
       <h4>Categories</h4>
       <ul class="footer-links">
-        <li><a href="/blog">Agriculture</a></li>
-        <li><a href="/blog">Business</a></li>
-        <li><a href="/blog">Food</a></li>
-        <li><a href="/blog">Health</a></li>
-        <li><a href="/blog">Import Export</a></li>
-        <li><a href="/blog">Marketing</a></li>
+        <li><a href="/blog?category=agriculture">Agriculture</a></li>
+        <li><a href="/blog?category=business">Business</a></li>
+        <li><a href="/blog?category=food">Food</a></li>
+        <li><a href="/blog?category=health">Health</a></li>
+        <li><a href="/blog?category=import-export">Import Export</a></li>
       </ul>
     </div>
     <div>
       <h4>Contact</h4>
       <ul class="footer-contact">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg> mabevicblog@gmail.com</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg> mabevicventures@gmail.com</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5.1-1.3A10 10 0 1012 2z"/></svg> WhatsApp: +234 814 284 6164</li>
       </ul>
     </div>

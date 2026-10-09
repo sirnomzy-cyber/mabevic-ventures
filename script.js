@@ -227,31 +227,107 @@ document.addEventListener('DOMContentLoaded', function () {
   searchInput && searchInput.addEventListener('input', applyFilters);
   if (filterTabs.length || searchInput) applyFilters();
 
-  /* ---------- Contact form ---------- */
-  var contactForm = document.querySelector('.inquiry-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var successBox = document.querySelector('.form-success');
-      if (successBox) {
-        successBox.classList.add('show');
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      contactForm.reset();
+  /* ---------- Lead capture forms (Web3Forms) ---------- */
+  var W3F_ENDPOINT = 'https://api.web3forms.com/submit';
+
+  // Posts a form's fields to Web3Forms and resolves to true only on a confirmed success.
+  function sendToWeb3Forms(form) {
+    return fetch(W3F_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        return !!(res.ok && data && data.success);
+      });
     });
   }
 
-  /* ---------- Newsletter form ---------- */
-  var newsletterForms = document.querySelectorAll('.newsletter-form, .newsletter-form-wide');
-  newsletterForms.forEach(function (form) {
+  // Inquiry form (contact page)
+  var contactForm = document.querySelector('.inquiry-form');
+  if (contactForm) {
+    var cBtn = contactForm.querySelector('button[type="submit"]');
+    var cOk = contactForm.querySelector('.form-success');
+    var cErr = contactForm.querySelector('.form-error');
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (cBtn.disabled) return;
+      var label = cBtn.textContent;
+      cBtn.disabled = true;
+      cBtn.textContent = 'Sending…';
+      cOk && cOk.classList.remove('show');
+      cErr && cErr.classList.remove('show');
+      sendToWeb3Forms(contactForm).then(function (ok) {
+        return ok;
+      }, function () {
+        return false;
+      }).then(function (ok) {
+        var box = ok ? cOk : cErr;
+        if (ok) contactForm.reset();
+        if (box) {
+          box.classList.add('show');
+          box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        cBtn.disabled = false;
+        cBtn.textContent = label;
+      });
+    });
+  }
+
+  // Newsletter sign-up forms
+  document.querySelectorAll('.newsletter-form-wide').forEach(function (form) {
+    var btn = form.querySelector('button[type="submit"]');
+    var status = form.querySelector('.form-status');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var btn = form.querySelector('button');
-      var original = btn.textContent;
-      btn.textContent = 'Subscribed ✓';
-      form.reset();
-      setTimeout(function () { btn.textContent = original; }, 2500);
+      if (btn.disabled) return;
+      var label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      if (status) { status.textContent = ''; status.className = 'form-status'; }
+      sendToWeb3Forms(form).then(function (ok) {
+        return ok;
+      }, function () {
+        return false;
+      }).then(function (ok) {
+        if (ok) form.reset();
+        if (status) {
+          status.textContent = ok
+            ? 'Thank you, you are subscribed.'
+            : 'Sorry, we could not sign you up just now. Please try again in a moment.';
+          status.className = 'form-status ' + (ok ? 'ok' : 'err');
+        }
+        btn.disabled = false;
+        btn.textContent = label;
+      });
     });
   });
+
+  /* ---------- Blog category filter ---------- */
+  var blogTabs = document.querySelectorAll('.blog-tab');
+  var blogCards = document.querySelectorAll('.blog-card[data-categories]');
+  if (blogTabs.length && blogCards.length) {
+    var showCategory = function (cat) {
+      blogTabs.forEach(function (t) {
+        t.classList.toggle('active', t.getAttribute('data-cat') === cat);
+      });
+      blogCards.forEach(function (card) {
+        var cats = (card.getAttribute('data-categories') || '').split(' ');
+        card.style.display = (cat === 'all' || cats.indexOf(cat) !== -1) ? '' : 'none';
+      });
+    };
+    var wanted = (new URLSearchParams(window.location.search).get('category') || 'all').toLowerCase();
+    if (!document.querySelector('.blog-tab[data-cat="' + wanted + '"]')) wanted = 'all';
+    showCategory(wanted);
+    blogTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var cat = tab.getAttribute('data-cat');
+        showCategory(cat);
+        try {
+          history.replaceState(null, '', window.location.pathname + (cat === 'all' ? '' : '?category=' + cat));
+        } catch (err) { /* ignore (e.g. opened from a file) */ }
+      });
+    });
+  }
 
 });

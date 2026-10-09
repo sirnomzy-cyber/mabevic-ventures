@@ -3,6 +3,10 @@
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* ---------- Footer copyright year (updates itself every January) ---------- */
+  var currentYear = new Date().getFullYear();
+  document.querySelectorAll('.js-year').forEach(function (el) { el.textContent = currentYear; });
+
   /* ---------- Preloader ---------- */
   var preloader = document.querySelector('.preloader');
   if (preloader) {

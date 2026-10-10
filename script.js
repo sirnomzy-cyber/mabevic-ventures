@@ -82,15 +82,22 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- Scroll reveal ---------- */
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealEls.length) {
-    var io = new IntersectionObserver(function (entries) {
+    var showWhenSeen = function (entries, observer) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
+    };
+    var revealMargin = '0px 0px -40px 0px';
+    var ioNormal = new IntersectionObserver(showWhenSeen, { threshold: 0.15, rootMargin: revealMargin });
+    // A block taller than the screen can never be 15% visible while it is still
+    // mostly off-screen, so very tall blocks reveal as soon as any part shows.
+    var ioTall = new IntersectionObserver(showWhenSeen, { threshold: 0, rootMargin: revealMargin });
+    revealEls.forEach(function (el) {
+      (el.offsetHeight > window.innerHeight * 0.7 ? ioTall : ioNormal).observe(el);
+    });
   } else {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }

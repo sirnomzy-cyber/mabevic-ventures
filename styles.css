@@ -1617,3 +1617,13 @@ a.article-cat-pill:hover{background:var(--gold);color:var(--green-900);}
   display:flex;align-items:center;justify-content:center;
   font-family:var(--font-head);font-weight:700;font-size:20px;letter-spacing:.02em;
 }
+
+
+/* ---------- Ebook card copy ---------- */
+.ebook-card .eb-body{display:flex;flex-direction:column;flex:1;}
+.ebook-card .eb-body h3{margin-bottom:10px;}
+.ebook-card .eb-hook{font-weight:600;font-size:14.5px;color:var(--green-800);margin:0 0 10px;line-height:1.5;}
+.ebook-card .eb-desc{font-size:14px;line-height:1.65;color:var(--ink-soft);margin:0 0 20px;}
+.ebook-card .eb-desc strong{color:var(--ink);font-weight:600;}
+.ebook-card .eb-body .btn{margin-top:auto;align-self:flex-start;}
+.ebook-card .eb-body .btn.btn-block{align-self:stretch;}
